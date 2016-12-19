@@ -1,0 +1,87 @@
+# FOS USER BUNDLE ROUTES
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /change-password
+
+# REGISTRATION
+fos_user_registration_register:
+    pattern: /inscription
+    defaults: { _controller: FOSUserBundle:Registration:register }
+    requirements:
+        _method: GET|POST
+
+fos_user_registration_check_email:
+    pattern: /inscription/e-mail
+    defaults: { _controller: FOSUserBundle:Registration:checkEmail }
+    requirements:
+        _method: GET
+
+fos_user_registration_confirm:
+    pattern: /inscription/confirmation/{token}
+    defaults: { _controller: FOSUserBundle:Registration:confirm }
+    requirements:
+        _method: GET
+
+fos_user_registration_confirmed:
+    pattern: /inscription/confirmation
+    defaults: { _controller: FOSUserBundle:Registration:confirmed }
+    requirements:
+        _method: GET
+
+# RESETTING PASSWORD
+fos_user_resetting_request:
+    pattern: /mot-de-passe-oublie/reinitialisation
+    defaults: { _controller: FOSUserBundle:Resetting:request }
+    requirements:
+        _method: GET
+
+fos_user_resetting_send_email:
+    pattern: /mot-de-passe-oublie/e-mail
+    defaults: { _controller: FOSUserBundle:Resetting:sendEmail }
+    requirements:
+        _method: GET|POST
+
+fos_user_resetting_check_email:
+    pattern: /mot-de-passe-oublie/verification
+    defaults: { _controller: FOSUserBundle:Resetting:checkEmail }
+    requirements:
+        _method: GET
+
+fos_user_resetting_reset:
+    pattern: /mot-de-passe-oublie/{token}
+    defaults: { _controller: FOSUserBundle:Resetting:reset }
+    requirements:
+        _method: GET|POST
+
+# APP BUNDLES
+sf_web_app_cms:
+    resource: « @SfWebAppCmsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sf_web_app_back_office:
+    resource: « @SfWebAppBackOfficeBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+sf_web_app_front_office:
+    resource: « @SfWebAppFrontOfficeBundle/Resources/config/routing.yml"
+    prefix:   /private-space
+
+
+sf_web_app_main:
+    resource: "@SfWebAppMainBundle/Resources/config/routing.yml"
+    prefix:   /
